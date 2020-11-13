@@ -25,5 +25,5 @@ interval=0
 signal=1
 
 [TIME_DATE]
-command=date | awk '{print "📅 "$1" " $2" "$3" "$4" "$5 }'
+command=date | awk '{print " 📅 "$1" " $2" "$3" "$4" "$5 }'
 interval=1
