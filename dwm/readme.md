@@ -67,6 +67,7 @@ More of the keybindings can be found in [config.h](config.h)
 ### Screenshots
 
 ![](dwm.png)
- 
+
+![](scrn.png)
 
         
