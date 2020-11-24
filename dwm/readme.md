@@ -1,4 +1,4 @@
-# DWM
+![](dwm.png)
 
 My updated build of dwm. 
 
@@ -68,8 +68,6 @@ More of the keybindings can be found in [config.h](config.h)
 - To launch dwm, ideally you should setup a ~/.xinitrc with at least exec dwm.
 
 ### Screenshots
-
-![](dwm.png)
 
 ![](scrn.png)
 
