@@ -93,10 +93,12 @@ static const char *termcmd[]     = { "st", NULL };
 static const char *mutecmd[] = { "pactl", "set-sink-mute", "0", "toggle", NULL };
 static const char *volupcmd[] = { "pactl", "set-sink-volume", "0", "+5%", NULL };
 static const char *voldowncmd[] = { "pactl", "set-sink-volume", "0", "-5%", NULL };
+static const char *shdwncmd[] = { "prompt", "Shutdown?", "shutdown -h now"  };
 static Key keys[] = {
 	/* modifier             key        function        argument */
 	{ MODKEY|ShiftMask,     XK_Return, spawn,          {.v = dmenucmd } },
 	{ MODKEY,               XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,     XK_x,      spawn,          {.v = shdwncmd } },
 	{ MODKEY,               XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,     XK_j,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,     XK_k,      rotatestack,    {.i = -1 } },
@@ -137,13 +139,13 @@ static Key keys[] = {
     /* Apps Launched with SUPER + ALT + KEY */
 	{ MODKEY|Mod1Mask,        XK_b,    spawn,          CMD("brave") },
 	{ MODKEY|Mod1Mask,        XK_n,    spawn,          CMD("st -e nmtui") },
-	{ MODKEY|Mod1Mask,        XK_e,    spawn,          CMD("nautilus") },
+	{ MODKEY|Mod1Mask,        XK_e,    spawn,          CMD("thunar") },
 	{ MODKEY|Mod1Mask,        XK_c,    spawn,          CMD("code") },
 	{ MODKEY|Mod1Mask,        XK_h,    spawn,          CMD("st -e htop") },
 	{ MODKEY|Mod1Mask,        XK_r,    spawn,          CMD("st -e rtv") },
     { MODKEY|Mod1Mask,        XK_w,    spawn,          CMD("st -e nitrogen --set-zoom-fill --random ~/Wallpapers") },
-  	{ MODKEY|Mod1Mask,        XK_x,    spawn,          CMD("st -e shutdown -h now") },
-  
+  	{ MODKEY|Mod1Mask,        XK_m,    spawn,          CMD("st -e mocp -T black_theme") },
+
 	TAGKEYS(                  XK_1,          0)
 	TAGKEYS(                  XK_2,          1)
 	TAGKEYS(                  XK_3,          2)
