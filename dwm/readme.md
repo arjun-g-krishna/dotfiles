@@ -16,7 +16,10 @@ My updated build of dwm.
 
 
 [Mod] + [j / k]         - focus on next/previous window in current tag.
+
 [Mod] + [h / l]         - increases / decreases master size.
+
+[Mod] + [Shift] + [x]   - Turn of computer
 
 ### Navigation
 
