@@ -1,10 +1,10 @@
-#include <X11/XF86keysym.h>
+#include<X11/XF86keysym.h>
 /* appearance */
-static const unsigned int borderpx    = 2;        /* border pixel of windows */
+static const unsigned int borderpx    = 3;        /* border pixel of windows */
 static const unsigned int snap        = 32;       /* snap pixel */
 static const unsigned int gappx       = 6;        /* pixel gap between clients */
 static const int showbar              = 1;        /* 0 means no bar */
-static const int topbar               = 1;        /* 0 means bottom bar */
+static const int topbar               = 0;        /* 0 means bottom bar */
 static const int horizpadbar          = 6;        /* horizontal padding for statusbar */
 static const int vertpadbar           = 7;        /* vertical padding for statusbar */
 /* Mononoki Nerd Font must be installed from AUR nerd-fonts-complete.
@@ -14,27 +14,26 @@ static const int vertpadbar           = 7;        /* vertical padding for status
  */
 
 /* "Mononoki Nerd Font:size=10:antialias=true:autohint=true",  */ 
-static const char *fonts[]            = {"Hack:size=10:antialias=true:autohint=true",
+static const char *fonts[]            = {"Hack-Regular:size=10:antialias=true:autohint=true",
                                          "Mononoki Nerd Font:size=10:antialias=true:autohint=true",
-                                         "Symbola:size=12",
-                                         "JoyPixels:size=10:antialias=true:autohint=true"
+                                         "Symbola:size=12:antialias=true:autohint-true",
 										};
-static const char col_gray1[]         = "#292d3e";
-static const char col_gray2[]         = "#363b57"; /* border color unfocused windows */
+static const char col_gray1[]         = "#000000";
+static const char col_gray2[]         = "#282823"; /* border color unfocused windows 001621 */ 
 static const char col_gray3[]         = "#96b5b4";
 static const char col_gray4[]         = "#d7d7d7";
-static const char col_cyan[]          = "#525252"; /* border color focused windows and tags */
+static const char col_cyan[]          = "#feb13f"; /* border color focused windows and tags */
 /* bar opacity 
  * 0xff is no transparency.
  * 0xee adds wee bit of transparency.
- * Play with the value to get desired transparency.
+ * Play with the value to get desired transparency. 001621 
  */
 static const unsigned int baralpha    = 0xee; 
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray4, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeSel]  = { col_gray1, col_cyan,  col_cyan  },
 };
 static const unsigned int alphas[][3] = {
 	/*               fg      bg        border     */
@@ -86,13 +85,15 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]    = { "dmenu_run", "-p", ": ", NULL };
+static const char *dmenucmd[]    = { "dmenu_run", "-p", "❯", NULL };
 /* An alternative way to launch st along with the fish shell */
 /* static const char *termcmd[]     = { "st", "-e fish", NULL }; */
-static const char *termcmd[]     = { "st", NULL };
+static const char *termcmd[]     = { "alacritty", NULL };
 static const char *mutecmd[] = { "pactl", "set-sink-mute", "0", "toggle", NULL };
 static const char *volupcmd[] = { "pactl", "set-sink-volume", "0", "+5%", NULL };
 static const char *voldowncmd[] = { "pactl", "set-sink-volume", "0", "-5%", NULL };
+static const char *brinc[] = { "brightness-control", "up", NULL };
+static const char *brdec[] = { "brightness-control", "down", NULL };
 static const char *shdwncmd[] = { "prompt", "Shutdown?", "shutdown -h now"  };
 static Key keys[] = {
 	/* modifier             key        function        argument */
@@ -111,10 +112,11 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,   XK_Return, zoom,           {0} },
 	{ MODKEY,               XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,     XK_c,      killclient,     {0} },
+	{ 0,                    XF86XK_MonBrightnessUp,    spawn,		   {.v = brinc} },
+ 	{ 0,                    XF86XK_MonBrightnessDown,  spawn,          {.v = brdec} },
 	{ 0,                    XF86XK_AudioMute, spawn,   {.v = mutecmd } },
 	{ 0,                    XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd } },
-	{ 0,                    XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd } },
-
+	{ 0,                    XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd } },	
     /* Layout manipulation */
 	{ MODKEY,               XK_Tab,    cyclelayout,    {.i = -1 } },
 	{ MODKEY|ShiftMask,     XK_Tab,    cyclelayout,    {.i = +1 } },
@@ -138,13 +140,13 @@ static Key keys[] = {
 	
     /* Apps Launched with SUPER + ALT + KEY */
 	{ MODKEY|Mod1Mask,        XK_b,    spawn,          CMD("brave") },
-	{ MODKEY|Mod1Mask,        XK_n,    spawn,          CMD("st -e nmtui") },
-	{ MODKEY|Mod1Mask,        XK_e,    spawn,          CMD("thunar") },
-	{ MODKEY|Mod1Mask,        XK_c,    spawn,          CMD("code") },
-	{ MODKEY|Mod1Mask,        XK_h,    spawn,          CMD("st -e htop") },
-	{ MODKEY|Mod1Mask,        XK_r,    spawn,          CMD("st -e rtv") },
-    { MODKEY|Mod1Mask,        XK_w,    spawn,          CMD("st -e nitrogen --set-zoom-fill --random ~/Wallpapers") },
-  	{ MODKEY|Mod1Mask,        XK_m,    spawn,          CMD("st -e mocp -T black_theme") },
+	{ MODKEY|Mod1Mask,        XK_n,    spawn,          CMD("networkmanager-dmenu") },
+	{ MODKEY|Mod1Mask,        XK_e,    spawn,          CMD("pcmanfm") },
+    { MODKEY|Mod1Mask,        XK_w,    spawn,          CMD("alacritty -e  feh --bg-fill --randomize ~/Wallpapers") },
+  	{ MODKEY|Mod1Mask,        XK_m,    spawn,          CMD("alacritty -e mocp -T transparent-background") },
+  	{ MODKEY|Mod1Mask,        XK_t,    spawn,          CMD("telegram-desktop") },
+	{ MODKEY|Mod1Mask,        XK_l,    spawn,          CMD("touchtoggle") },
+
 
 	TAGKEYS(                  XK_1,          0)
 	TAGKEYS(                  XK_2,          1)
