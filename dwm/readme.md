@@ -65,7 +65,7 @@ More of the keybindings can be found in [config.h](config.h)
 
         make
         
-        sudo makeinstall
+        sudo make install
         
 - To launch dwm, ideally you should setup a ~/.xinitrc with at least exec dwm.
 
