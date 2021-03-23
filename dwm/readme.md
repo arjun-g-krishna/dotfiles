@@ -61,9 +61,11 @@ More of the keybindings can be found in [config.h](config.h)
     
         vim config.h
         
-- Save the file and install
+- Build and install
 
-        sudo make clean install
+        make
+        
+        sudo makeinstall
         
 - To launch dwm, ideally you should setup a ~/.xinitrc with at least exec dwm.
 
