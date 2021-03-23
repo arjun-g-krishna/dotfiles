@@ -1,6 +1,6 @@
 ![](dwm.png)
 
-My updated build of dwm, forked from [dwm-distrotube](https://aur.archlinux.org/packages/dwm-distrotube-git/).
+My simple build of dwm
 
 ## Keybindings
 
