@@ -61,11 +61,20 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
-
+static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
+static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
+static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+static const char *brinc[] = { "brightness", "up", NULL };
+static const char *brdec[] = { "brightness", "down", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd} },	
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = dmenucmd } },
+	{ 0, 							XF86XK_AudioMute, spawn,   {.v = mutecmd } },
+	{ 0, 							XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd } },
+	{ 0, 							XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd } },
+	{ 0, 							XF86XK_MonBrightnessUp, spawn, {.v = brinc} },
+	{ 0, 							XF86XK_MonBrightnessDown, spawn, {.v = brdec} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -92,7 +101,8 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,        		XK_e,    spawn,          CMD("pcmanfm") },
   	{ MODKEY|Mod1Mask,        		XK_m,    spawn,          CMD("alacritty -e mocp -T transparent-background") },
   	{ MODKEY|Mod1Mask,        		XK_t,    spawn,          CMD("telegram-desktop") },
-	{ MODKEY|Mod1Mask,        		XK_l,    spawn,          CMD("touchtoggle") },
+	{ MODKEY|Mod1Mask,        		XK_x,    spawn,          CMD("prompt Shutdown? 'shutdown -h now' ") },
+	{ MODKEY|Mod1Mask,        		XK_r,    spawn,          CMD("prompt Reeboot? 'shutdown -r now' ") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
