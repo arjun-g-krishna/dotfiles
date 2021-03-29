@@ -19,7 +19,7 @@ My simple build of dwm
 
 [Mod] + [h / l]         - increases / decreases master size.
 
-[Mod] + [Shift] + [x]   - Turn of computer
+[Mod] + [Alt] + [x]   - Turn of computer
 
 ### Navigation
 
