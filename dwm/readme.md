@@ -71,9 +71,7 @@ More of the keybindings can be found in [config.h](config.h)
 
 ### Screenshots
 
-![](screenshots/images1.png)
-
-![](screenshots/images2.png)
+![](preview.png)
 
 
         
