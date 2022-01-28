@@ -11,16 +11,10 @@ static const char *fonts[]     = {"Hack:size=12:antialias=true:autohint=true",
                                   "Symbola Regular:size=12:antialias=true:autohint=true"
 						     	};
 static const char col_1[]  = "#212121"; /* background color of bar */
-static const char col_2[]  = "#878787"; /* border color unfocused windows */
+static const char col_2[]  = "#9c9c9c"; /* border color unfocused windows */
 static const char col_3[]  = "#000000";
 static const char col_4[]  = "#1e2226"; /* border color focused windows and tags feb13f */
 static const char col_5[]  = "#ffffff";
-/* bar opacity 
- * 0xff is no transparency.
- * 0xee adds wee bit of transparency.
- * 0xdd adds adds a bit more transparency.
- * Play with the value to get desired transparency.
- */
 static const unsigned int baralpha    = 0xff; 
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
@@ -77,16 +71,9 @@ static const Layout layouts[] = {
 
 /* dmenu */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-/* If you are using the standard dmenu program, use the following. */
 static const char *dmenucmd[]    = { "dmenu_run", "-p", "❯ ", NULL };
-/* If you are using the dmenu-distrotube-git program, use the following for a cooler dmenu! */
-/* static const char *dmenucmd[]    = { "dmenu_run", "-g", "10", "-l", "48", "-p", "Run: ", NULL }; */
 
-/* the st terminal with tabbed */
 static const char *termcmd[]     = { "st", NULL };
-/* An alternative way to launch st along with the fish shell */
-/* static const char *termcmd[]     = { "st", "-e fish", NULL }; */
-static const char *tabtermcmd[]  = { "tabbed", "-r", "2", "st", "-w", "''", NULL };
 static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
 static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
