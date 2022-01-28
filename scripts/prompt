@@ -2,7 +2,7 @@
 
 # Dmenu binary prompt.
 # Gives a dmenu prompt labled with $1 to perform command $2.
-# Example: dprompt "Suspend?" "sudo systemctl suspend"
+# Example: prompt "Suspend?" "sudo systemctl suspend"
 
 [ "$(printf 'No\nYes' \
     | dmenu -p "$1" \
