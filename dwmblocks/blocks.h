@@ -2,11 +2,11 @@
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
 
-	{" ", "weather",					60,		0},
+//	{"", "weather",					60,		0},
 
 	{" Battery ", "battery.sh",					30,		0},
 	
-	{"", "volume",				0,		10},
+	{"", "volume",				60,		10},
 
 	{"Mem ", "free -h | awk '/^Mem/ { print $3\"/\"$2 }' | sed s/i//g",	30,		0},
 
