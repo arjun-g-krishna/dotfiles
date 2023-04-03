@@ -4,13 +4,13 @@ static const Block blocks[] = {
 
 //	{"", "weather",					60,		0},
 
-	{" Battery ", "battery.sh",					30,		0},
+	{"Battery ", "battery.sh",					30,		0},
 	
-	{"", "volume",				60,		10},
+	{"Sound ", "volume.sh",				60,		10},
 
 	{"Mem ", "free -h | awk '/^Mem/ { print $3\"/\"$2 }' | sed s/i//g",	30,		0},
 
-	{"CPU ", "cpu.sh",					30,		0},
+	{"CPU", "cpu.sh",					30,		0},
 
 	{"", "date '+%a %D %H:%M'",					5,		0},
 	

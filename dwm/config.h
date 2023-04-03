@@ -6,7 +6,7 @@ static const int showbar           = 1;   /* 0 means no bar */
 static const int topbar            = 1;   /* 0 means bottom bar */
 static const int horizpadbar       = 6;   /* horizontal padding for statusbar */
 static const int vertpadbar        = 7;   /* vertical padding for statusbar */
-static const char *fonts[]     = {"Hack:size=12:antialias=true:autohint=true",
+static const char *fonts[]     = {"Hack Nerd Font:size=14:antialias=true:autohint=true",
 								  "Mononoki Nerd Font:size=12:antialias=true:autohint=true"	
                                   "Symbola Regular:size=12:antialias=true:autohint=true"
 						     	};
@@ -75,8 +75,8 @@ static const char *dmenucmd[]    = { "dmenu_run", "-p", "❯ ", NULL };
 
 static const char *termcmd[]     = { "st", NULL };
 static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
-static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
-static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+static const char *volupcmd[] = { "amixer", "-D", "pulse", "sset","Master", "5%+", "unmute", NULL };
+static const char *voldowncmd[] = { "amixer", "-D", "pulse", "sset", "Master", "5%-", "unmute", NULL };
 
 static Key keys[] = {
 	/* modifier             chain key  key        function        argument */
@@ -120,12 +120,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     -1,        XK_period, tagmon,         {.i = +1 } },
 	
     /* Keybindings for programs using the format SUPER + ALT + "key" */
-	{ MODKEY|Mod1Mask,      -1,        XK_b,      spawn,          CMD("brave") },
+	{ MODKEY|Mod1Mask,      -1,        XK_b,      spawn,          CMD("firefox") },
 	{ MODKEY|Mod1Mask,      -1,        XK_e,      spawn,          CMD("pcmanfm") },
 	{ MODKEY|Mod1Mask,      -1,        XK_m,      spawn,          CMD("st -e mocp -T transparent-background") },
-	{ MODKEY|Mod1Mask,      -1,        XK_x,      spawn,          CMD("prompt Shutdown? 'shutdown now'") },
-	{ MODKEY|Mod1Mask,      -1,        XK_n,      spawn,          CMD("networkmanager_dmenu") },
-	{ MODKEY|Mod1Mask,      -1,        XK_r,      spawn,          CMD("prompt Reboot? 'shutdown -r now'") },
 	TAGKEYS(                -1,        XK_1,                      0)
 	TAGKEYS(                -1,        XK_2,                      1)
 	TAGKEYS(                -1,        XK_3,                      2)
