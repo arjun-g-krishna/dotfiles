@@ -74,6 +74,9 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[]    = { "dmenu_run", "-p", "❯ ", NULL };
 
 static const char *termcmd[]     = { "st", NULL };
+
+static const char *brightness_up[]  =   { "brillo", "-q", "-A", "5", NULL };
+static const char *brightness_down[]  =   { "brillo", "-q", "-U", "5", NULL };
 static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
 static const char *volupcmd[] = { "amixer", "-D", "pulse", "sset","Master", "5%+", "unmute", NULL };
 static const char *voldowncmd[] = { "amixer", "-D", "pulse", "sset", "Master", "5%-", "unmute", NULL };
@@ -85,6 +88,8 @@ static Key keys[] = {
 	{ 0, 					-1,		XF86XK_AudioMute, spawn,   {.v = mutecmd } },
 	{ 0, 					-1,		XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd } },
 	{ 0, 					-1,		XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd } },
+	{ 0, 					-1,		XF86XK_MonBrightnessUp, spawn, {.v = brightness_up } },
+	{ 0, 					-1,		XF86XK_MonBrightnessDown, spawn, {.v = brightness_down } },
 	{ MODKEY,               -1,        XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,     -1,        XK_j,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,     -1,        XK_k,      rotatestack,    {.i = -1 } },
