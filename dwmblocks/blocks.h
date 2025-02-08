@@ -4,19 +4,19 @@ static const Block blocks[] = {
 
 //	{"", "weather",					60,		0},
 
-	{"Battery ", "battery.sh",					30,		0},
+	{" ", "battery.sh",					30,		0},
 	
-	{"Sound ", "volume.sh",				60,		10},
+	{"󰋋 ", "volume.sh",				60,		10},
 
-	{"Mem ", "free -h | awk '/^Mem/ { print $3\"/\"$2 }' | sed s/i//g",	30,		0},
+	{" ", "free -h | awk '/^Mem/ { print $3\"/\"$2 }' | sed s/i//g",	30,		0},
 
-	{"CPU", "cpu.sh",					30,		0},
+	{"  ", "cpu.sh",					30,		0},
 
-	{"", "date '+%a %D %H:%M'",					5,		0},
+	{" ", "date '+%a %d %b %I:%M %p'",					5,		0},
 	
 
 };
 
 //sets delimeter between status commands. NULL character ('\0') means no delimeter.
-static char delim[] = " ❯ ";
+static char delim[] = "  ";
 static unsigned int delimLen = 5;

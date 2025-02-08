@@ -15,10 +15,10 @@ static const char col_2[]  = "#9c9c9c"; /* border color unfocused windows */
 static const char col_3[]  = "#000000";
 static const char col_4[]  = "#1e2226"; /* border color focused windows and tags feb13f */
 static const char col_5[]  = "#ffffff";
-static const unsigned int baralpha    = 0xff; 
+static const unsigned int baralpha    = 0xff;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
-	/*               fg         bg         border   */
+        /*               fg         bg         border   */
 	[SchemeNorm] = { col_2, col_1, col_2 },
 	[SchemeSel]  = { col_5, col_4, col_4 },
 };
@@ -125,7 +125,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     -1,        XK_period, tagmon,         {.i = +1 } },
 	
     /* Keybindings for programs using the format SUPER + ALT + "key" */
-	{ MODKEY|Mod1Mask,      -1,        XK_b,      spawn,          CMD("firefox") },
+	{ MODKEY|Mod1Mask,      -1,        XK_b,      spawn,          CMD("st -e bluetui") },
+	{ MODKEY|Mod1Mask,      -1,        XK_w,      spawn,          CMD("brave") },
 	{ MODKEY|Mod1Mask,      -1,        XK_e,      spawn,          CMD("pcmanfm") },
 	{ MODKEY|Mod1Mask,      -1,        XK_m,      spawn,          CMD("st -e mocp -T transparent-background") },
 	TAGKEYS(                -1,        XK_1,                      0)

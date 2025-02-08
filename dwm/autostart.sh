@@ -1,8 +1,8 @@
 #! /bin/bash
-lxsession &
-picom &
+# lxsession &
+# picom &
 dwmblocks &
-/usr/bin/emacs --daemon &
+# /usr/bin/emacs --daemon &
 
 ### Uncomment only ONE of the following ###
 # uncomment this line to restore last saved wallpaper...
